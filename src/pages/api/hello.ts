@@ -2,12 +2,24 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 type Data = {
-  name: string;
+  peoples: string[] | undefined;
 };
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>,
+  res: NextApiResponse<Data>
 ) {
-  res.status(200).json({ name: "John Doe" });
+  const data = [
+    "vedant",
+    "dipali",
+    "mitalee",
+    "dipraj",
+    "nehali",
+    "ruchita",
+    "shruti",
+  ];
+
+  if (req.method === "GET") {
+    res.status(200).json({ peoples: data });
+  }
 }
